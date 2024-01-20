@@ -23,7 +23,7 @@ index 3926b20..17bd454 100755
  fi
  
 +# Start dropbear SSH server
-+if [ ! -f /configs/dropbear ]; then
++if [ ! -d /configs/dropbear ]; then
 +	mkdir -p /configs/dropbear
 +fi
 +
