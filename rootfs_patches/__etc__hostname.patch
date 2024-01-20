@@ -1,0 +1,7 @@
+diff --git a/etc/hostname b/etc/hostname
+index 7ffe4dc..d1984f7 100644
+--- a/etc/hostname
++++ b/etc/hostname
+@@ -1 +1 @@
+-WCV3
++WyzeCamV3

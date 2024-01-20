@@ -1,0 +1,24 @@
+diff --git a/etc/profile b/etc/profile
+index 6a0f99e..7fce309 100644
+--- a/etc/profile
++++ b/etc/profile
+@@ -1,15 +1,11 @@
+-# Set PS1
+-if [ "$PS1" ]; then
+-	if [ "`id -u`" -eq 0 ]; then
+-		export PS1='[\u@\h:\W]# '
+-	else
+-		export PS1='[\u@\h:\W]$ '
+-	fi
+-fi
++export PS1='\[\e[1;31m\]\u@\h \w # \[\e[0m\]\[\e[32m\]\[\e[00m\]'
++export TERM='xterm-256color'
++export TERMINFO=/etc/terminfo
+ 
+ # Set terminal env
+ export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+ export PATH=/system/bin:$PATH
++export PATH=/opt/bin:/opt/sbin:/usr/local/bin:$PATH
+ export LD_LIBRARY_PATH=/system/lib
+ export LD_LIBRARY_PATH=/thirdlib:$LD_LIBRARY_PATH
+ #export TZ=UTC-8

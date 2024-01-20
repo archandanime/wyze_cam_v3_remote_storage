@@ -1,0 +1,56 @@
+diff --git a/etc/init.d/rcS b/etc/init.d/rcS
+index 3926b20..17bd454 100755
+--- a/etc/init.d/rcS
++++ b/etc/init.d/rcS
+@@ -26,6 +26,7 @@ echo " __________________________________
+ # Set Global Environment
+ export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+ export PATH=/system/bin:$PATH
++export PATH=/opt/bin:/opt/sbin:/usr/local/bin:$PATH
+ export LD_LIBRARY_PATH=/system/lib
+ export LD_LIBRARY_PATH=/thirdlib:$LD_LIBRARY_PATH
+ 
+@@ -42,10 +43,43 @@ mount -t squashfs /dev/mtdblock3 /system
+ # Mount configs partition
+ mount -t jffs2 /dev/mtdblock6 /configs
+ 
++# Mount aback partition
++mount -t squashfs /dev/mtdblock5 /usr/local/bin || echo "Failed to mount aback at /usr/loca/bin"
++
+ # Run init script
+ if [ -f /system/init/app_init.sh ]; then
+     /system/init/app_init.sh &
+ fi
+ 
++# Start dropbear SSH server
++if [ ! -f /configs/dropbear ]; then
++	mkdir -p /configs/dropbear
++fi
++
++echo -n "Starting dropbear "
++if [ -f /configs/dropbear/authorized_keys ]; then
++	echo "with public key authentication..."
++	/bin/dropbear -R -s
++else
++	echo "with password authentication..."
++	/bin/dropbear -R
++fi
++
++# Start dufs file server
++echo -n "Starting dufs "
++if [ -f /configs/dufs.yaml ]; then
++	echo "with custom configuration file..."
++	/usr/local/bin/dufs -c /configs/dufs.yaml &
++else
++	echo "with default configuration file..."
++	/usr/local/bin/dufs -c /etc/dufs.yaml &
++fi
++
++# Start Entware
++if [ -f /configs/entware.sh ]; then
++	echo "Starting Entware... "
++	/configs/entware.sh
++fi
++
+ # Run liteOta upgrade app
+ #/liteOta &

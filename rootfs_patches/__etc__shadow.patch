@@ -1,0 +1,7 @@
+diff --git a/etc/shadow b/etc/shadow
+index dc769fe..202f225 100644
+--- a/etc/shadow
++++ b/etc/shadow
+@@ -1 +1 @@
+-root:$6$wyzecamv3$8gyTEsAkm1d7wh12Eup5MMcxQwuA1n1FsRtQLUW8dZGo1b1pGRJgtSieTI02VPeFP9f4DodbIt2ePOLzwP0WI0:0:0:99999:7:::
++root:u1Wh/Ywl3ZETI:19637:0:99999:7:::

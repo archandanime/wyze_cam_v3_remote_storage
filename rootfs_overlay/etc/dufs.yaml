@@ -1,0 +1,30 @@
+# dufs configuration file
+
+#serve-path: '/www'
+serve-path: '/www/default'
+bind: 0.0.0.0
+port: 5000
+path-prefix:
+#hidden:
+#  - tmp
+#  - '*.log'
+#  - '*.lock'
+auth:
+#   - user:pass@/alarm,/record,/time_lapse
+#   - admin:pass@/mmc:rw,/configs:rw
+#  - '@/'  # According to the YAML spec, quoting is required.
+allow-all: false
+allow-upload: false
+allow-delete: false
+allow-search: true
+allow-symlink: true
+allow-archive: true
+enable-cors: true
+render-index: false
+render-try-index: false
+render-spa: false
+#assets: ./assets/
+#log-format: '$remote_addr "$request" $status $http_user_agent'
+#compress: low
+#tls-cert: /configs/cert.pem
+#tls-key: /configs/key_pkcs1.pem
