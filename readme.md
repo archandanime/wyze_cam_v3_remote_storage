@@ -16,12 +16,12 @@
 
 ## Configure SSH public key authentication
 
-You can setup SSH public key authentication by creating `/configs/authorized_keys` with your public key. If the `authorized_keys` file exists, dropbear only allows public key authentication.
+You can setup SSH public key authentication by creating `/configs/dropbear/authorized_keys` with your public key. If the `authorized_keys` file exists, dropbear use public key authentication instead od the default password.
 
-In case you set the `authorized_keys` file incorrectly, restore the backed up `configs` partition using wz_flash-helper.
+In case you set the `authorized_keys` file incorrectly, restore the previously backed up `configs` partition using wz_flash-helper to reset.
 
 ## Configure File server
 
-By default, dufs has no authentication and servers `alarm`, `record` and `time_lapse` firectories on SD card. To configure authentication, server path and users, copy `/etc/dufs.yaml` to `/configs/dufs.yaml` and edit it.
+By default, dufs has no authentication and serves `alarm`, `record` and `time_lapse` directories on SD card. To configure authentication, server path and users, copy `/etc/dufs.yaml` to `/configs/dufs.yaml` and edit it.
 
 **Credit:** @gtxaspec for iperf3 binary, I was unable to compile it using Buildroot
